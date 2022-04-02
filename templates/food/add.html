@@ -2,7 +2,10 @@
 {% block body %}
 <form method="POST">
     {% csrf_token %}
-    {{ form }}
+    <ui>{{ form.item_name }} </ui>
+    <ui>{{ form.item_desc }} </ui>
+    <ui>{{ form.item_price }} </ui>
+    <ui>{{ form.item_image }} </ui>
     <button type="submit">Save</button>
 </form>
 {% endblock %}
