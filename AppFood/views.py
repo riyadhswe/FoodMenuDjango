@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,redirect
 from .models import *
+from .forms import *
 
 
 # Create your views here.
@@ -21,3 +22,11 @@ def detail(request, item_id):
         'item': item,
     }
     return render(request, 'food/detail.html', context)
+
+
+def add(request):
+    form = ItemForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('AppFood:index')
+    return render(request,'food/add.html',{'form':form})

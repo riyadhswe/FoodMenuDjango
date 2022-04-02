@@ -4,5 +4,8 @@ app_name = 'AppFood'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:item_id>', views.detail, name='detail'),
-    path('item/', views.item, name='item')
+    path('item/', views.item, name='item'),
+
+    #Add items
+    path('add/', views.add, name='add'),
 ]
