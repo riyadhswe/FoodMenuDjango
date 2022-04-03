@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body %}
 <form method="POST">
     {% csrf_token %}
-    <ui>{{ form.item_name }} </ui>
-    <ui>{{ form.item_desc }} </ui>
-    <ui>{{ form.item_price }} </ui>
-    <ui>{{ form.item_image }} </ui>
+    {{ form }}
     <button type="submit">Save</button>
 </form>
 {% endblock %}

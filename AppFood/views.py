@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse,redirect
+from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from .forms import *
 
@@ -29,4 +29,23 @@ def add(request):
     if form.is_valid():
         form.save()
         return redirect('AppFood:index')
-    return render(request,'food/add.html',{'form':form})
+    return render(request, 'food/add.html', {'form': form})
+
+
+def edit(request, id):
+    item = Item.objects.get(id=id)
+    form = ItemForm(request.POST or None, instance=item)
+    if form.is_valid():
+        form.save()
+        return redirect('AppFood:index')
+
+    return render(request, 'food/add.html', {'form': form, 'item': item})
+
+
+def delete(request, id):
+    item = Item.objects.get(id=id)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('AppFood:index')
+
+    return render(request, 'food/delete.html', {'item': item})
