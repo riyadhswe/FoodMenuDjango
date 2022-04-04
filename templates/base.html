@@ -20,6 +20,12 @@
         <a class="navbar-item nav-link" href="#">View Item</a>
     </div>
 </nav>
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{ massage.tags }}">    {{ message }} </div>
+
+{% endfor%}
+{% endif %}
 {% block body %}
 
 {% endblock %}
