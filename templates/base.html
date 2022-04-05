@@ -18,13 +18,20 @@
         <a class="navbar-item nav-link" href="{% url 'AppFood:add' %}">Add Item</a>
         <a class="navbar-item nav-link" href="#">Delete Item</a>
         <a class="navbar-item nav-link" href="#">View Item</a>
+        {% if user.is_authenticated %}
+            <a class="navbar-item nav-link" href="{% url 'profile' %}">profile</a>
+            <a class="navbar-item nav-link" href="{% url 'logout' %}">Logout</a>
+
+        {% else %}
+            <a class="navbar-item nav-link" href="{% url 'login' %}">Logout</a>
+        {% endif %}
     </div>
 </nav>
 {% if messages %}
-{% for message in messages %}
-    <div class="alert alert-{{ massage.tags }}">    {{ message }} </div>
+    {% for message in messages %}
+        <div class="alert alert-{{ massage.tags }}">    {{ message }} </div>
 
-{% endfor%}
+    {% endfor %}
 {% endif %}
 {% block body %}
 
