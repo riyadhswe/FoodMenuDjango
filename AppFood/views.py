@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 """def index(request):
@@ -38,12 +39,23 @@ class FoodDetail(DetailView):
     template_name = 'food/detail.html'
 
 
-def add(request):
+"""def add(request):
     form = ItemForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('AppFood:index')
     return render(request, 'food/add.html', {'form': form})
+"""
+
+
+class CreateItem(CreateView):
+    model = Item
+    fields = ['item_name','item_desc','item_price','item_image']
+    template_name = 'food/add.html'
+
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        return super().form_valid(form)
 
 
 def edit(request, id):

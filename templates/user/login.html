@@ -1,5 +1,21 @@
-<form method="POST">
+{% extends 'base.html' %}
+{% block body %}
+    <div class="content">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+            <div class="card-header">
+            <div class="card-title">
+ <form method="POST">
     {% csrf_token %}
     {{ form }}
     <button type="submit">Login</button>
 </form>
+{% endblock %}
+</div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+

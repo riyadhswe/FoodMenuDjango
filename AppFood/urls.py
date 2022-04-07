@@ -8,7 +8,7 @@ urlpatterns = [
     path('item/', views.item, name='item'),
 
     # add items
-    path('add/', views.add, name='add'),
+    path('add/', views.CreateItem.as_view(), name='add'),
     # update items
     path('edit/<int:id>/', views.edit, name='edit'),
     # delete items
