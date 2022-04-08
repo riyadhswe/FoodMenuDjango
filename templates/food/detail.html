@@ -8,9 +8,8 @@
         </div>
     </div>
 
-    <h1>{{ object.id }}</h1>
     <h1>{{ object.item_name }}</h1>
-    <h1>{{ object.item_desc }}</h1>
+    <h5 align="justify">{{ object.item_desc }}</h5>
     <h1>${{ object.item_price }}</h1>
         <a href="{% url 'AppFood:delete' item.id %}">Delete</a>
 {% endblock %}
